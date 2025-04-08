@@ -24,7 +24,31 @@
       position: relative;
     }
 
-    
+    .border-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 10px solid transparent;
+      border-radius: 50px;
+      box-shadow:
+        0 0 20px #ff69b4,
+        0 0 30px #ff69b4,
+        0 0 40px #ff69b4,
+        0 0 50px #ff69b4;
+      animation: glowBorder 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes glowBorder {
+      0%, 100% {
+        box-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 50px #ff69b4;
+      }
+      50% {
+        box-shadow: 0 0 40px #ff69b4, 0 0 60px #ff69b4, 0 0 70px #ff69b4, 0 0 80px #ff69b4;
+      }
+        }
 
     .gif-container {
       position: absolute;
