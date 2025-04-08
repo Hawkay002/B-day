@@ -24,31 +24,7 @@
       position: relative;
     }
 
-    .border-glow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 10px solid transparent;
-      border-radius: 50px;
-      box-shadow:
-        0 0 20px #ff69b4,
-        0 0 30px #8a2be2,
-        0 0 40px #1e90ff,
-        0 0 50px #ff4500;
-      animation: glowBorder 6s ease-in-out infinite;
-      z-index: 1;
-    }
-
-    @keyframes glowBorder {
-      0%, 100% {
-        box-shadow: 0 0 20px #ff69b4, 0 0 30px #8a2be2, 0 0 40px #1e90ff, 0 0 50px #ff4500;
-      }
-      50% {
-        box-shadow: 0 0 40px #ff69b4, 0 0 60px #8a2be2, 0 0 70px #1e90ff, 0 0 80px #ff4500;
-      }
-    }
+    
 
     .gif-container {
       position: absolute;
