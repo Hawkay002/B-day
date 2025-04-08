@@ -52,8 +52,6 @@
       font-size: 1.6rem;
       color: #333;
       line-height: 1.8;
-      opacity: 0;
-      animation: revealText 3s ease-in-out forwards 3s;
     }
 
     .hug-gif {
@@ -97,7 +95,7 @@
 <body>
   <div class="message-box">
     <h1>My Message to You 💌</h1>
-    <p class="personal-msg">
+    <p class="personal-msg" id="typewriter">
       Hey uh...💝,<br><br>
       Tujhe sochta hu mai shaam-o-subah... 💖<br>
       Isse jyada tujhe aur chahu to kya?...<br>
@@ -108,5 +106,22 @@
     </p>
     <img class="hug-gif" src="https://media.giphy.com/media/ArLxZ4PebH2Ug/giphy.gif" alt="hug gif">
   </div>
+  <script>
+  const text = `Hey uh...💝,\n\nTujhe sochta hu mai shaam-o-subah... 💖\nIsse jyada tujhe aur chahu to kya?...\nTere hi khayalon me duba raha...\nIsse jyada tujhe aur chahu to kya?... 🌸\n\nThank you for coming in my life. I hope this little gesture brings a smile on your face 😊\n\nHappy Birthday, again... from someone who truly cares. 🎂🎁💐`;
+
+  const target = document.getElementById("typewriter");
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      target.innerHTML += text.charAt(index) === '\n' ? '<br>' : text.charAt(index);
+      index++;
+      setTimeout(typeEffect, 45); // typing speed
+    }
+  }
+
+  // Start typing after 3 seconds (to match existing animation delay)
+  setTimeout(typeEffect, 3000);
+  </script>
 </body>
 </html>
