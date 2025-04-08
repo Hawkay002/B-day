@@ -57,13 +57,8 @@
       transform: translate(-50%, -50%);
       opacity: 0;
       animation: fadeSlideUp 2s ease-out forwards;
+      animation-fill-mode: forwards;
       z-index: 3;
-    }
-
-    .gif-container img {
-      width: 300px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
     }
 
     @keyframes fadeSlideUp {
@@ -76,9 +71,15 @@
         transform: translate(-50%, -50%) scale(1);
       }
       100% {
-        opacity: 0;
+        opacity: 1;
         transform: translate(-50%, -150%) scale(0.8);
       }
+    }
+
+    .gif-container img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
     }
 
     .content {
@@ -159,12 +160,13 @@
       text-decoration: none;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(255, 105, 180, 0.6);
-      transition: transform 0.2s ease;
-      position: absolute;
-      animation: floatAround 10s ease-in-out infinite, fadeIn 2s ease-in-out forwards;
-      animation-delay: 5.2s, 5.2s;
-      opacity: 0;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
       z-index: 5;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 5.2s;
     }
 
     .floating-btn:active {
@@ -172,12 +174,10 @@
       background: #ff1493;
     }
 
-    @keyframes floatAround {
-      0%   { top: 10%; left: 10%; }
-      25%  { top: 20%; left: 60%; }
-      50%  { top: 70%; left: 50%; }
-      75%  { top: 60%; left: 20%; }
-      100% { top: 10%; left: 10%; }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     .petal {
@@ -230,7 +230,6 @@
       counter.textContent = "Taps: " + tapCount;
 
       if (tapCount === 3) {
-        // Confetti burst
         confetti({
           particleCount: 200,
           spread: 100,
@@ -238,11 +237,10 @@
         });
         setTimeout(() => {
           window.location.href = "surprise.html";
-        }, 2000); // slight delay after confetti
+        }, 2000);
       }
     });
 
-    // Petals
     function createPetal() {
       const petal = document.createElement("div");
       petal.classList.add("petal");
