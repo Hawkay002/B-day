@@ -153,7 +153,7 @@
     .floating-btn {
   font-family: 'Sacramento', cursive;
   font-size: 1.6rem;
-  background: rgba(255, 255, 255, 0.15); /* soft white, like the text */
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
   padding: 12px 24px;
   border-radius: 30px;
@@ -161,14 +161,16 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
   transition: transform 0.2s ease, background 0.3s ease;
-  position: absolute;
+  position: fixed; /* important for anchoring to screen corners */
+  bottom: 20px;
+  right: 20px;
   animation: floatAround 10s ease-in-out infinite, fadeIn 2s ease-in-out forwards;
   animation-delay: 1.5s, 1.5s;
   opacity: 0;
   z-index: 5;
   backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-}
+    }
 
 .floating-btn:active {
   transform: scale(0.95);
