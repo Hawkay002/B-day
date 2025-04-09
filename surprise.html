@@ -19,8 +19,7 @@
 
     body {
       font-family: 'Dancing Script', cursive;
-      background: url('img/cat-kiss.gif') no-repeat center center fixed;
-      background-size: cover;
+      background: none; /* Remove GIF background initially */
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -190,10 +189,12 @@
 
   <!-- Loader -->
   <div class="loading">
-    <svg width="128px" height="96px">
-      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
-      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
-    </svg>
+    <div style="background-color: #ff69b4; width: 128px; height: 96px; display: flex; justify-content: center; align-items: center;">
+      <svg width="128px" height="96px">
+        <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
+        <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
+      </svg>
+    </div>
   </div>
 
   <!-- Main Content -->
@@ -238,6 +239,8 @@
       setTimeout(() => {
         const loader = document.querySelector(".loading");
         const mainContent = document.getElementById("mainContent");
+        document.body.style.background = "url('img/cat-kiss.gif') no-repeat center center fixed"; /* Add GIF background after loader */
+        document.body.style.backgroundSize = "cover";
 
         // Hide loader and show main content
         loader.style.display = "none";
