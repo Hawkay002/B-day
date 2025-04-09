@@ -247,7 +247,7 @@
     }
 
     /* Hide Main Content Initially */
-    .hidden {
+    #mainContent {
       display: none;
     }
     
@@ -263,6 +263,7 @@
     </svg>
   </div>
   
+  <div id = "mainContent">
   <div class="border-glow"></div>
 
   <div class="gif-container">
@@ -277,6 +278,7 @@
   </div>
 
   <a class="floating-btn" id="tapBtn">Tap to Open</a>
+  </div>
 
   <!-- Confetti Script -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -325,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
      // Hide loader and show main content
      loader.style.display = "none";
-     mainContent.classList.remove("hidden");
+     mainContent.style.display = "block";
    }, 5000);
 });
 
