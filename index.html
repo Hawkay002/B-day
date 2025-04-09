@@ -207,10 +207,40 @@
         transform: translateY(100vh) rotate(360deg);
       }
     }
+    #loader {
+  position: fixed;
+  z-index: 9999;
+  background-color: #ff69b4;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease;
+}
+
+.loader-spinner {
+  border: 8px solid #fff;
+  border-top: 8px solid #ff1493;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+                   }
   </style>
 </head>
 <body>
-
+<div id="loader">
+  <div class="loader-spinner"></div>
+</div>
   <div class="border-glow"></div>
 
   <div class="gif-container">
@@ -262,6 +292,14 @@
     }
 
     setInterval(createPetal, 300);
+
+    window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 600); // matches CSS transition duration
+});
   </script>
 
 </body>
