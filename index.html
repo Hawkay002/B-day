@@ -207,40 +207,62 @@
         transform: translateY(100vh) rotate(360deg);
       }
     }
-    #loader {
-  position: fixed;
-  z-index: 9999;
-  background-color: #ff69b4;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.6s ease;
-}
 
-.loader-spinner {
-  border: 8px solid #fff;
-  border-top: 8px solid #ff1493;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  animation: spin 1s linear infinite;
-}
+        /* Loader Styles */
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-                   }
+    .loading svg polyline {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .loading svg polyline#back {
+      fill: none;
+      stroke: #ff4d5033;
+    }
+
+    .loading svg polyline#front {
+      fill: none;
+      stroke: #ff4d4f;
+      stroke-dasharray: 48, 144;
+      stroke-dashoffset: 192;
+      animation: dash_682 1.4s linear infinite;
+    }
+
+    @keyframes dash_682 {
+      72.5% {
+        opacity: 0;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Hide Main Content Initially */
+    .hidden {
+      display: none;
+    }
+    
   </style>
 </head>
 <body>
-<div id="loader">
-  <div class="loader-spinner"></div>
-</div>
+  
+<!-- Loader -->
+  <div class="loading">
+    <svg width="64px" height="48px">
+        <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+        <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+    </svg>
+  </div>
+  
   <div class="border-glow"></div>
 
   <div class="gif-container">
@@ -293,13 +315,21 @@
 
     setInterval(createPetal, 300);
 
-    window.addEventListener("load", function () {
-  const loader = document.getElementById("loader");
-  loader.style.opacity = "0";
-  setTimeout(() => {
-    loader.style.display = "none";
-  }, 600); // matches CSS transition duration
+    
+document.addEventListener("DOMContentLoaded", function () {
+  
+   // Wait for the loader animation to finish (5 seconds)
+   setTimeout(() => {
+     const loader = document.querySelector(".loading");
+     const mainContent = document.getElementById("mainContent");
+
+     // Hide loader and show main content
+     loader.style.display = "none";
+     mainContent.classList.remove("hidden");
+   }, 5000);
 });
+
+
   </script>
 
 </body>
