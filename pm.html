@@ -1,28 +1,379 @@
 <!DOCTYPE html>
+
+
+
+
+
+
+
 <html lang="en">
+
+
+
+
+
+
+
 <head>
+
+
+
   <meta charset="UTF-8">
+
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
   <title>Personal Message</title>
+
+
+
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&family=Pacifico&display=swap" rel="stylesheet">
+
+
+
   <style>
+
+
+
     * {
+
+
+
       margin: 0;
+
+
+
       padding: 0;
+
+
+
       box-sizing: border-box;
+
+
+
     }
+
+
+
+
+
+
 
     body {
-      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1); /* Website background color for loader */
+
+
+
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+
+
+
       font-family: 'Pacifico', cursive;
-      min-height: 100vh;
+
+
+
       display: flex;
+
+
+
       justify-content: center;
-      align-items: center;
-      overflow-y: auto; /* Enable scrolling */
+
+
+
+      align-items: flex-start;
+
+
+
+      min-height: 100vh;
+
+
+
+      padding: 20px;
+
+
+
+      text-align: center;
+
+
+
+      overflow-y: auto; /* ✅ Scroll Fix */
+
+
+
     }
 
-    /* Loader Styles */
+
+
+
+
+
+
+    .message-box {
+
+
+
+      background: white;
+
+
+
+      padding: 30px 25px;
+
+
+
+      border-radius: 20px;
+
+
+
+      box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
+
+
+
+      max-width: 550px;
+
+
+
+      width: 100%;
+
+
+
+      margin-top: 40px;
+
+
+
+      margin-bottom: 40px;
+
+
+
+      opacity: 0;
+
+
+
+      transform: translateY(50px);
+
+
+
+      animation: fadeSlideIn 2s ease-out forwards 1.5s;
+
+
+
+    }
+
+
+
+
+
+
+
+    h1 {
+
+
+
+      font-family: 'Great Vibes', cursive;
+
+
+
+      font-size: 2.6rem;
+
+
+
+      color: #ff69b4;
+
+
+
+      text-shadow: 0 0 15px #ffb6c1;
+
+
+
+      margin-bottom: 20px;
+
+
+
+      animation: glow 2s ease-in-out infinite alternate;
+
+
+
+    }
+
+
+
+
+
+
+
+    .personal-msg {
+
+
+
+      font-family: 'Sacramento', cursive;
+
+
+
+      font-size: 1.6rem;
+
+
+
+      color: #333;
+
+
+
+      line-height: 1.8;
+
+
+
+    }
+
+
+
+
+
+
+
+    .hug-gif {
+
+
+
+      width: 200px;
+
+      height: 200px;
+
+
+
+      margin-top: 25px;
+
+
+
+      opacity: 0;
+
+
+
+      animation: fadeIn 2s ease-in-out forwards 18s, pulse 3s infinite 3s;
+
+
+
+    }
+
+
+
+
+
+
+
+    @keyframes fadeSlideIn {
+
+
+
+      to {
+
+
+
+        opacity: 1;
+
+
+
+        transform: translateY(0);
+
+
+
+      }
+
+
+
+    }
+
+
+
+
+
+
+
+    @keyframes glow {
+
+
+
+      from { text-shadow: 0 0 10px #ff69b4; }
+
+
+
+      to { text-shadow: 0 0 20px #ff1493; }
+
+
+
+    }
+
+
+
+
+
+
+
+    @keyframes fadeIn {
+
+
+
+      to {
+
+
+
+        opacity: 1;
+
+
+
+      }
+
+
+
+    }
+
+
+
+
+
+
+
+    @keyframes pulse {
+
+
+
+      0% { transform: scale(1); }
+
+
+
+      50% { transform: scale(1.08); }
+
+
+
+      100% { transform: scale(1); }
+
+
+
+    }
+
+
+
+
+
+
+
+    @keyframes revealText {
+
+
+
+      to {
+
+
+
+        opacity: 1;
+
+
+
+      }
+
+
+
+    }
+/* Loader Styles */
     .loading {
       position: fixed;
       top: 50%;
@@ -32,144 +383,146 @@
     }
 
     .loading svg polyline {
-      fill: none;
-      stroke-width: 6; /* Line thickness */
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+  fill: none;
+  stroke-width: 6; /* Increased line thickness */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
-    .loading svg polyline#back {
-      fill: none;
-      stroke: #ffffff33; /* Semi-transparent white */
-    }
+.loading svg polyline#back {
+  fill: none;
+  stroke: #ffffff33; /* White color with opacity */
+}
 
-    .loading svg polyline#front {
-      fill: none;
-      stroke: #ffffff; /* Solid white */
-      stroke-dasharray: 96, 288;
-      stroke-dashoffset: 384;
-      animation: dash_682 1.4s linear infinite;
-    }
+.loading svg polyline#front {
+  fill: none;
+  stroke: #ffffff; /* Pure white color */
+  stroke-dasharray: 96, 288;
+  stroke-dashoffset: 384;
+  animation: dash_682 1.4s linear infinite;
+}
 
-    @keyframes dash_682 {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+/* Hide Main Content Initially */
     #mainContent {
-      display: none; /* Hide main content during loader phase */
+      display: none;
     }
 
-    .message-box {
-      background: white;
-      padding: 30px 25px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
-      max-width: 550px;
-      width: 100%;
-      margin-top: 40px;
-      margin-bottom: 40px;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeSlideIn 3.5s ease-out forwards 1.5s;
-    }
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.6rem;
-      color: #ff69b4;
-      text-shadow: 0 0 15px #ffb6c1;
-      margin-bottom: 20px;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    .personal-msg {
-      font-family: 'Sacramento', cursive;
-      font-size: 1.6rem;
-      color: #333;
-      line-height: 1.8;
-    }
-
-    .hug-gif {
-      width: 200px;
-      height: 200px;
-      margin-top: 25px;
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards, pulse 3s infinite alternate-reverse ease-in-out both; 
-    }
-
-    @keyframes fadeSlideIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ff69b4; }
-      to { text-shadow: 0 0 20px #ff1493; }
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
   </style>
+
+
+
 </head>
+
+
 
 <body>
 
-  <!-- Loader -->
   <div class="loading">
-    <svg width="128px" height="96px">
+  <svg width="128px" height="96px">
       <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
       <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
-    </svg>
-  </div>
+  </svg>
+</div>
 
-  <!-- Main Content -->
-  <div id="mainContent">
-    <div class="message-box">
-      <h1>My Message to You 💌</h1>
-      <p class="personal-msg" id="typewriter"></p>
-      <img class="hug-gif" src="img/Picsart_25-04-08_10-39-05-847.png" alt="hug gif">
-    </div>
+<div id = "mainContent">
+
+
+  <div class="message-box">
+
+
+
+    <h1>My Message to You 💌</h1>
+
+
+
+    <p class="personal-msg" id="typewriter"></p>
+
+
+
+    <img class="hug-gif" src="img/Picsart_25-04-08_10-39-05-847.png" alt="hug gif">
+
+
+
   </div>
+</div>
+
+
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      setTimeout(() => {
-        const loader = document.querySelector(".loading");
-        const mainContent = document.getElementById("mainContent");
 
-        // Hide loader and show main content
-        loader.style.display = "none";
-        mainContent.style.display = "block";
-      }, 5000);
-    });
 
-    const text = `Hey uh...💝,\n\nTujhe sochta hu mai shaam-o-subah... 💖\nIsse jyada tujhe aur chahu to kya?...\nTere hi khayalon me duba raha...\nIsse jyada tujhe aur chahu to kya?... 🌸\n\nThank you for coming in my life. I hope this little gesture brings a smile on your face 😊\n\nHappy Birthday, again... from someone who truly cares. 🎂🎁💐`;
 
-    const target = document.getElementById("typewriter");
+  const text = `Hey uh...💝,\n\nTujhe sochta hu mai shaam-o-subah... 💖\nIsse jyada tujhe aur chahu to kya?...\nTere hi khayalon me duba raha...\nIsse jyada tujhe aur chahu to kya?... 🌸\n\nThank you for coming in my life. I hope this little gesture brings a smile on your face 😊\n\nHappy Birthday, again... from someone who truly cares. 🎂🎁💐`;
 
-    let index = 0;
 
-    function typeEffect() {
-      if (index < text.length) {
-        target.innerHTML += text.charAt(index) === '\n' ? '<br>' : text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 45);
-      }
-    }
 
-    setTimeout(typeEffect, 3000);
+
+
+
+
+const target = document.getElementById("typewriter");
+
+
+
+let index = 0;
+
+
+
+
+
+
+
+function typeEffect() {
+
+
+
+  if (index < text.length) {
+
+
+
+    target.innerHTML += text.charAt(index) === '\n' ? '<br>' : text.charAt(index);
+
+
+
+    index++;
+
+
+
+    setTimeout(typeEffect, 45);
+
+
+
+  }
+
+
+
+}
+
+
+
+
+
+
+
+setTimeout(typeEffect, 3000);
+
+
+
   </script>
 
+
+
 </body>
+
+
+
 </html>
