@@ -19,42 +19,52 @@
 
     body {
       font-family: 'Dancing Script', cursive;
-      background: none; /* Remove GIF background initially */
+      background-color: #ff69b4; /* Pink background for loader phase */
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 10px;
-      overflow-y: auto; /* Scroll enable */
+      overflow-y: auto; /* Enable scrolling */
       position: relative;
     }
 
-    .petal1, .petal2 {
-      position: absolute;
-      top: -50px;
-      background-size: cover;
-      pointer-events: none;
-      opacity: 0.8;
-      z-index: 1;
-      animation: fall linear infinite;
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
     }
 
-    .petal1 {
-      width: 15px;
-      height: 15px;
-      background-image: url('img/petal-style1.gif');
+    .loading svg polyline {
+      fill: none;
+      stroke-width: 6; /* Line thickness */
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .petal2 {
-      width: 75px;
-      height: 75px;
-      background-image: url('img/petal-style2.gif');
-      opacity: 0.9;
+    .loading svg polyline#back {
+      fill: none;
+      stroke: #ffffff33; /* Semi-transparent white */
     }
 
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    .loading svg polyline#front {
+      fill: none;
+      stroke: #ffffff; /* Solid white */
+      stroke-dasharray: 96, 288;
+      stroke-dashoffset: 384;
+      animation: dash_682 1.4s linear infinite;
+    }
+
+    @keyframes dash_682 {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #mainContent {
+      display: none; /* Hide main content during loader phase */
     }
 
     main.glow-border {
@@ -68,8 +78,6 @@
       justify-content: center;
       align-items: center;
       padding: 25px 18px;
-      z-index: 2;
-      margin: 40px 0; /* Spacing for scroll */
     }
 
     .main-img {
@@ -144,57 +152,22 @@
       100% { transform: scale(1); }
     }
 
-    /* Loader Styles */
-    .loading {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-    }
-
-    .loading svg polyline {
-      fill: none;
-      stroke-width: 6; /* Increased line thickness */
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .loading svg polyline#back {
-      fill: none;
-      stroke: #ffffff33; /* White color with opacity */
-    }
-
-    .loading svg polyline#front {
-      fill: none;
-      stroke: #ffffff; /* Pure white color */
-      stroke-dasharray: 96, 288;
-      stroke-dashoffset: 384;
-      animation: dash_682 1.4s linear infinite;
-    }
-
-    @keyframes dash_682 {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    /* Hide Main Content Initially */
-    #mainContent {
-      display: none;
-    }
-  </style>
+    /* Add fallback for GIF background */
+    body.gif-active {
+        background-image: url('img/cat-kiss.gif');
+        background-size: cover; 
+        background-repeat:no-repeat; 
+   }
+</style>
 </head>
 <body>
 
   <!-- Loader -->
   <div class="loading">
-    <div style="background-color: #ff69b4; width: 128px; height: 96px; display: flex; justify-content: center; align-items: center;">
-      <svg width="128px" height="96px">
-        <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
-        <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
-      </svg>
-    </div>
+    <svg width="128px" height="96px">
+      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
+      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
+    </svg>
   </div>
 
   <!-- Main Content -->
@@ -239,13 +212,13 @@
       setTimeout(() => {
         const loader = document.querySelector(".loading");
         const mainContent = document.getElementById("mainContent");
-        document.body.style.background = "url('img/cat-kiss.gif') no-repeat center center fixed"; /* Add GIF background after loader */
+        document.body.classList.add("gif-active"); /* Add GIF background after loader */
         document.body.style.backgroundSize = "cover";
 
         // Hide loader and show main content
         loader.style.display = "none";
         mainContent.style.display = "block";
-      }, 5000);
+      }, 3000);
     });
   </script>
 
