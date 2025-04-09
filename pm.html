@@ -15,12 +15,10 @@
     body {
       background: linear-gradient(to bottom right, #fff0f5, #ffe4e1); /* Website background color for loader */
       font-family: 'Pacifico', cursive;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 20px;
-      text-align: center;
+      align-items: center;
       overflow-y: auto; /* Enable scrolling */
     }
 
@@ -74,7 +72,7 @@
       margin-bottom: 40px;
       opacity: 0;
       transform: translateY(50px);
-      animation: fadeSlideIn 2s ease-out forwards 1.5s;
+      animation: fadeSlideIn 3.5s ease-out forwards 1.5s;
     }
 
     h1 {
@@ -98,7 +96,7 @@
       height: 200px;
       margin-top: 25px;
       opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards, pulse 3s infinite alternate-reverse ease-in-out both;
+      animation: fadeIn 2s ease-in-out forwards, pulse 3s infinite alternate-reverse ease-in-out both; 
     }
 
     @keyframes fadeSlideIn {
@@ -129,12 +127,10 @@
 
   <!-- Loader -->
   <div class="loading">
-    <div style="background: linear-gradient(to bottom right, #fff0f5, #ffe4e1); width: 128px; height: 96px; display: flex; justify-content: center; align-items: center;">
-      <svg width="128px" height="96px">
-        <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
-        <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
-      </svg>
-    </div>
+    <svg width="128px" height="96px">
+      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
+      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
+    </svg>
   </div>
 
   <!-- Main Content -->
