@@ -517,6 +517,19 @@ setTimeout(typeEffect, 3000);
 
 
 
+    document.addEventListener("DOMContentLoaded", function () {
+  
+   // Wait for the loader animation to finish (5 seconds)
+   setTimeout(() => {
+     const loader = document.querySelector(".loading");
+     const mainContent = document.getElementById("mainContent");
+
+     // Hide loader and show main content
+     loader.style.display = "none";
+     mainContent.style.display = "block";
+   }, 5000);
+});
+
   </script>
 
 
