@@ -1,541 +1,262 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
 <html lang="en">
-
-
-
-
-
-
-
-<head>
-
-
-
+ <head>
   <meta charset="UTF-8">
-
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-  <title>Personal Message</title>
-
-
-
+  <title>Birthday Message</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&family=Pacifico&display=swap" rel="stylesheet">
-
-
-
   <style>
-
-
-
-    * {
-
-
-
-      margin: 0;
-
-
-
-      padding: 0;
-
-
-
-      box-sizing: border-box;
-
-
-
-    }
-
-
-
-
-
-
-
-    body {
-
-
-
-      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
-
-
-
-      font-family: 'Pacifico', cursive;
-
-
-
-      display: flex;
-
-
-
-      justify-content: center;
-
-
-
-      align-items: flex-start;
-
-
-
-      min-height: 100vh;
-
-
-
-      padding: 20px;
-
-
-
-      text-align: center;
-
-
-
-      overflow-y: auto; /* ✅ Scroll Fix */
-
-
-
-    }
-
-
-
-
-
-
-
-    .message-box {
-
-
-
-      background: white;
-
-
-
-      padding: 30px 25px;
-
-
-
-      border-radius: 20px;
-
-
-
-      box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
-
-
-
-      max-width: 550px;
-
-
-
-      width: 100%;
-
-
-
-      margin-top: 40px;
-
-
-
-      margin-bottom: 40px;
-
-
-
-      opacity: 0;
-
-
-
-      transform: translateY(50px);
-
-
-
-      animation: fadeSlideIn 2s ease-out forwards 1.5s;
-
-
-
-    }
-
-
-
-
-
-
-
-    h1 {
-
-
-
-      font-family: 'Great Vibes', cursive;
-
-
-
-      font-size: 2.6rem;
-
-
-
-      color: #ff69b4;
-
-
-
-      text-shadow: 0 0 15px #ffb6c1;
-
-
-
-      margin-bottom: 20px;
-
-
-
-      animation: glow 2s ease-in-out infinite alternate;
-
-
-
-    }
-
-
-
-
-
-
-
-    .personal-msg {
-
-
-
-      font-family: 'Sacramento', cursive;
-
-
-
-      font-size: 1.6rem;
-
-
-
-      color: #333;
-
-
-
-      line-height: 1.8;
-
-
-
-    }
-
-
-
-
-
-
-
-    .hug-gif {
-
-
-
-      width: 200px;
-
-      height: 200px;
-
-
-
-      margin-top: 25px;
-
-
-
-      opacity: 0;
-
-
-
-      animation: fadeIn 2s ease-in-out forwards 16s, pulse 3s infinite 3s;
-
-
-
-    }
-
-
-
-
-
-
-
-    @keyframes fadeSlideIn {
-
-
-
-      to {
-
-
-
-        opacity: 1;
-
-
-
-        transform: translateY(0);
-
-
-
-      }
-
-
-
-    }
-
-
-
-
-
-
-
-    @keyframes glow {
-
-
-
-      from { text-shadow: 0 0 10px #ff69b4; }
-
-
-
-      to { text-shadow: 0 0 20px #ff1493; }
-
-
-
-    }
-
-
-
-
-
-
-
-    @keyframes fadeIn {
-
-
-
-      to {
-
-
-
-        opacity: 1;
-
-
-
-      }
-
-
-
-    }
-
-
-
-
-
-
-
-    @keyframes pulse {
-
-
-
-      0% { transform: scale(1); }
-
-
-
-      50% { transform: scale(1.08); }
-
-
-
-      100% { transform: scale(1); }
-
-
-
-    }
-
-
-
-
-
-
-
-    @keyframes revealText {
-
-
-
-      to {
-
-
-
-        opacity: 1;
-
-
-
-      }
-
-
-
-    }
-/* Loader Styles */
-    .loading {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-    }
-
-    .loading svg polyline {
-  fill: none;
-  stroke-width: 6; /* Increased line thickness */
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.loading svg polyline#back {
-  fill: none;
-  stroke: #ffffff33; /* White color with opacity */
-}
-
-.loading svg polyline#front {
-  fill: none;
-  stroke: #ffffff; /* Pure white color */
-  stroke-dasharray: 96, 288;
-  stroke-dashoffset: 384;
-  animation: dash_682 1.4s linear infinite;
-}
-
-@keyframes dash_682 {
-  72.5% {
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+   body {
+    background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+    font-family: 'Pacifico', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    overflow-y: auto;
+   }
+   .message-box {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
+    max-width: 550px;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
     opacity: 0;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-/* Hide Main Content Initially */
-    #mainContent {
-      display: none;
+    transform: translateY(50px);
+    animation: fadeSlideIn 2s ease-out forwards 1.5s;
+   }
+   h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.6rem;
+    color: #ff69b4;
+    text-shadow: 0 0 15px #ffb6c1;
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite alternate;
+   }
+   .personal-msg {
+    font-family: 'Sacramento', cursive;
+    font-size: 1.6rem;
+    color: #333;
+    line-height: 1.8;
+   }
+   .hug-gif {
+    width: 200px;
+    height: 200px;
+    margin-top: 25px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards 40s, pulse 3s infinite 3s;
+   }
+   @keyframes fadeSlideIn {
+    to {
+     opacity: 1;
+     transform: translateY(0);
     }
-
-
+   }
+   @keyframes glow {
+    from {
+     text-shadow: 0 0 10px #ff69b4;
+    }
+    to {
+     text-shadow: 0 0 20px #ff1493;
+    }
+   }
+   @keyframes fadeIn {
+    to {
+     opacity: 1;
+    }
+   }
+   @keyframes pulse {
+    0% {
+     transform: scale(1);
+    }
+    50% {
+     transform: scale(1.08);
+    }
+    100% {
+     transform: scale(1);
+    }
+   }
+   .loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+   }
+   .loading svg polyline {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+   }
+   .loading svg polyline#back {
+    fill: none;
+    stroke: #ffffff33;
+   }
+   .loading svg polyline#front {
+    fill: none;
+    stroke: #ffffff;
+    stroke-dasharray: 96, 288;
+    stroke-dashoffset: 384;
+    animation: dash_682 1.4s linear infinite;
+   }
+   @keyframes dash_682 {
+    72.5% {
+     opacity: 0;
+    }
+    to {
+     stroke-dashoffset: 0;
+    }
+   }
+   #mainContent {
+    display: none;
+   }
+   
+   /* Button Styles */
+   .button-container {
+    margin-top: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards 42s;
+   }
+   .card-button {
+    background: linear-gradient(to right, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    font-family: 'Pacifico', cursive;
+   }
+   .card-button:disabled {
+    background: linear-gradient(to right, #cccccc, #aaaaaa);
+    cursor: not-allowed;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   }
+   .card-button:not(:disabled):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+   }
+   .copy-button {
+    background: transparent;
+    color: #ff69b4;
+    border: 2px solid #ff69b4;
+    padding: 8px 20px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Pacifico', cursive;
+   }
+   .copy-button:hover {
+    background: #ff69b4;
+    color: white;
+   }
+   .secret-code {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    font-family: 'Sacramento', cursive;
+   }
   </style>
-
-
-
-</head>
-
-
-
-<body>
-
+ </head>
+ <body>
   <div class="loading">
-  <svg width="128px" height="96px">
-      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
-      <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
-  </svg>
-</div>
-
-<div id = "mainContent">
-
-
-  <div class="message-box">
-
-
-
-    <h1>My Message to You 💌</h1>
-
-
-
-    <p class="personal-msg" id="typewriter"></p>
-
-
-
-    <img class="hug-gif" src="img/Picsart_25-04-08_10-39-05-847.png" alt="hug gif">
-
-
-
+   <svg width="128px" height="96px">
+    <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="back"></polyline>
+    <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
+   </svg>
   </div>
-</div>
-
-
-
-  <script>
-
-
-
-  const text = `Hey uh...💝,\n\nTujhe sochta hu mai shaam-o-subah... 💖\nIsse jyada tujhe aur chahu to kya?...\nTere hi khayalon me duba raha...\nIsse jyada tujhe aur chahu to kya?... 🌸\n\nThank you for coming in my life. I hope this little gesture brings a smile on your face 😊\n\nHappy Birthday, again... from someone who truly cares. 🎂🎁💐`;
-
-
-
-
-
-
-
-const target = document.getElementById("typewriter");
-
-
-
-let index = 0;
-
-
-
-
-
-
-
-function typeEffect() {
-
-
-
-  if (index < text.length) {
-
-
-
-    target.innerHTML += text.charAt(index) === '\n' ? '<br>' : text.charAt(index);
-
-
-
-    index++;
-
-
-
-    setTimeout(typeEffect, 45);
-
-
-
-  }
-
-
-
-}
-
-
-
-
-
-
-
-setTimeout(typeEffect, 3000);
-
-
-
-    document.addEventListener("DOMContentLoaded", function () {
+  <div id="mainContent">
+   <div class="message-box">
+    <h1>My Dickfelt Message 🍆💌</h1>
+    <p class="personal-msg" id="typewriter"></p>
+    <img class="hug-gif" src="img/Picsart_25-04-08_10-39-05-847.png" alt="hug gif">
+    
+    <!-- Button Container -->
+    <div class="button-container">
+      <button id="cardButton" class="card-button" disabled>Get Your Card</button>
+      <br>
+      <button id="copyCodeButton" class="copy-button">Copy Secret Code to Unlock</button>
+    </div>
+   </div>
+  </div>
   
-   // Wait for the loader animation to finish (5 seconds)
-   setTimeout(() => {
+  <script>
+   const text = `Happy birthday twin!...,\n\nAnother year, same date, same chaos, - guess greatness (or stubbornness) really does come in pairs.\nOnce again, we somehow made it to this day alive… last year we swore it might be our last but here we are.\nStill-fucking-breathing.\n\nSome days I seriously feel like letting a car do me the favor and end the respawn cycle instantly but nope, the universe keeps buffering us through.\nAnyway, fucking happy birthday.\nYour existence may not have tilted the population count one way or the other (kisiko spawn kill bhi na kar paya 🫩) but hey, at least we’ve survived another patch update.\n\nBas zyada khush na ho mittar, automation hai, mujhe bhi shauk nahi beech flight mein pyar jatane ka 🤢`;
+   const target = document.getElementById("typewriter");
+   let index = 0;
+   
+   function typeEffect() {
+    if (index < text.length) {
+     target.innerHTML += text.charAt(index) === '\n' ? '<br>' : text.charAt(index);
+     index++;
+     setTimeout(typeEffect, 45);
+    }
+   }
+   
+   setTimeout(typeEffect, 3000);
+   
+   document.addEventListener("DOMContentLoaded", function() {
+    // Wait for the loader animation to finish (5 seconds)
+    setTimeout(() => {
      const loader = document.querySelector(".loading");
      const mainContent = document.getElementById("mainContent");
-
      // Hide loader and show main content
      loader.style.display = "none";
      mainContent.style.display = "block";
-   }, 3000);
-});
-
+    }, 3000);
+    
+    // Set up button functionality
+    const cardButton = document.getElementById("cardButton");
+    const copyCodeButton = document.getElementById("copyCodeButton");
+    
+    copyCodeButton.addEventListener("click", function() {
+     // Copy the secret code to clipboard
+     const secretCode = "10/10/2002";
+     navigator.clipboard.writeText(secretCode)
+      .then(() => {
+       // Change button text to indicate success
+       copyCodeButton.textContent = "Code Copied!";
+       copyCodeButton.style.background = "#4CAF50";
+       copyCodeButton.style.borderColor = "#4CAF50";
+       copyCodeButton.style.color = "white";
+       
+       // Enable the card button
+       cardButton.disabled = false;
+       
+       // Reset button after 2 seconds
+       setTimeout(() => {
+        copyCodeButton.textContent = "Copy Secret Code to Unlock";
+        copyCodeButton.style.background = "";
+        copyCodeButton.style.borderColor = "#ff69b4";
+        copyCodeButton.style.color = "#ff69b4";
+       }, 2000);
+      })
+      .catch(err => {
+       console.error('Failed to copy: ', err);
+       alert("Failed to copy secret code. Please try again.");
+      });
+    });
+    
+    cardButton.addEventListener("click", function() {
+     // Redirect to Telegram
+     window.location.href = "https://t.me/Wish_bd_bot?start=";
+    });
+   });
   </script>
-
-
-
-</body>
-
-
-
+ </body>
 </html>
