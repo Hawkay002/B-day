@@ -4,16 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Message</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
+   :root {
+    --primary-color: #000000;
+    --secondary-color: #ff00ff;
+    --accent-color: #ffff00;
+    --bg-color: #ffffff;
+   }
+   
    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
    }
+   
    body {
-    background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
-    font-family: 'Pacifico', cursive;
+    background-color: var(--bg-color);
+    font-family: 'Space Mono', monospace;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -21,12 +29,14 @@
     padding: 20px;
     text-align: center;
     overflow-y: auto;
+    border: 8px solid var(--primary-color);
    }
+   
    .message-box {
-    background: white;
-    padding: 30px 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
+    background: var(--bg-color);
+    padding: 10px 10px;
+    border: 8px solid var(--primary-color);
+    box-shadow: 12px 12px 0px var(--primary-color);
     max-width: 550px;
     width: 100%;
     margin-top: 40px;
@@ -34,28 +44,73 @@
     opacity: 0;
     transform: translateY(50px);
     animation: fadeSlideIn 2s ease-out forwards 1.5s;
+    position: relative;
    }
+   
+   /* Neo-brutalist decorative elements */
+   .decorative-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+   }
+   
+   .corner-tl {
+    top: -8px;
+    left: -8px;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+   }
+   
+   .corner-tr {
+    top: -8px;
+    right: -8px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+   }
+   
+   .corner-bl {
+    bottom: -8px;
+    left: -8px;
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+   }
+   
+   .corner-br {
+    bottom: -8px;
+    right: -8px;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+   }
+   
    h1 {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Archivo Black', sans-serif;
     font-size: 2.6rem;
-    color: #ff69b4;
-    text-shadow: 0 0 15px #ffb6c1;
+    color: var(--primary-color);
     margin-bottom: 20px;
-    animation: glow 2s ease-in-out infinite alternate;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: var(--accent-color);
+    padding: 8px 16px;
+    border: 4px solid var(--primary-color);
    }
+   
    .personal-msg {
-    font-family: 'Sacramento', cursive;
-    font-size: 1.6rem;
-    color: #333;
-    line-height: 1.8;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    line-height: 1.6;
+    text-align: left;
+    padding: 16px;
+    border: 4px solid var(--primary-color);
+    background-color: var(--bg-color);
    }
+   
    .hug-gif {
     width: 200px;
     height: 200px;
     margin-top: 25px;
     opacity: 0;
     animation: fadeIn 2s ease-in-out forwards 34s, pulse 3s infinite 3s;
+    padding: 4px;
    }
+   
    @keyframes fadeSlideIn {
     to {
      opacity: 1;
@@ -86,6 +141,7 @@
      transform: scale(1);
     }
    }
+   
    .loading {
     position: fixed;
     top: 50%;
@@ -93,23 +149,27 @@
     transform: translate(-50%, -50%);
     z-index: 10;
    }
+   
    .loading svg polyline {
     fill: none;
     stroke-width: 6;
     stroke-linecap: round;
     stroke-linejoin: round;
    }
+   
    .loading svg polyline#back {
     fill: none;
-    stroke: #ffffff33;
+    stroke: #00000033;
    }
+   
    .loading svg polyline#front {
     fill: none;
-    stroke: #ffffff;
+    stroke: #000000;
     stroke-dasharray: 96, 288;
     stroke-dashoffset: 384;
     animation: dash_682 1.4s linear infinite;
    }
+   
    @keyframes dash_682 {
     72.5% {
      opacity: 0;
@@ -118,6 +178,7 @@
      stroke-dashoffset: 0;
     }
    }
+   
    #mainContent {
     display: none;
    }
@@ -128,48 +189,102 @@
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards 36s;
    }
+   
    .card-button {
-    background: linear-gradient(to right, #ff69b4, #ff1493);
-    color: white;
-    border: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 4px solid var(--primary-color);
     padding: 12px 30px;
     font-size: 1.2rem;
-    border-radius: 50px;
     cursor: pointer;
     margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
-    transition: all 0.3s ease;
-    font-family: 'Pacifico', cursive;
+    box-shadow: 6px 6px 0px var(--primary-color);
+    transition: all 0.1s ease;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
    }
+   
    .card-button:disabled {
-    background: linear-gradient(to right, #cccccc, #aaaaaa);
+    background-color: #cccccc;
+    color: #666666;
     cursor: not-allowed;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 6px 6px 0px #666666;
    }
+   
    .card-button:not(:disabled):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px var(--primary-color);
    }
+   
+   .card-button:not(:disabled):active {
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0px var(--primary-color);
+   }
+   
    .copy-button {
-    background: transparent;
-    color: #ff69b4;
-    border: 2px solid #ff69b4;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    border: 4px solid var(--primary-color);
     padding: 8px 20px;
     font-size: 1rem;
-    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Pacifico', cursive;
+    transition: all 0.1s ease;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0px var(--primary-color);
    }
+   
    .copy-button:hover {
-    background: #ff69b4;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
    }
+   
+   .copy-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px var(--primary-color);
+   }
+   
    .secret-code {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #666;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Space Mono', monospace;
+   }
+   
+   /* Neo-brutalist decorative lines */
+   .line-decoration {
+    position: absolute;
+    background-color: var(--primary-color);
+   }
+   
+   .line-horizontal {
+    width: 100%;
+    height: 4px;
+    left: 0;
+   }
+   
+   .line-vertical {
+    height: 100%;
+    width: 4px;
+    top: 0;
+   }
+   
+   .line-top {
+    top: 20%;
+   }
+   
+   .line-bottom {
+    bottom: 20%;
+   }
+   
+   .line-left {
+    left: 20%;
+   }
+   
+   .line-right {
+    right: 20%;
    }
   </style>
  </head>
@@ -180,6 +295,7 @@
     <polyline points="0.157 47.908, 28 47.908, 43.686 96, 86 0, 100 48, 128 48" id="front"></polyline>
    </svg>
   </div>
+  
   <div id="mainContent">
    <div class="message-box">
     <h1>My Dickfelt Message 🍆💌</h1>
@@ -196,7 +312,7 @@
   </div>
   
   <script>
-   const text = `Happy birthday twin!...,\n\nAnother year, same date, same chaos, - guess greatness (or stubbornness) really does come in pairs.\nOnce again, we somehow made it to this day alive… last year we swore it might be our last but here we are.\nStill-fucking-breathing.\n\nSome days I seriously feel like letting a car do me the favor and end the respawn cycle instantly but nope, the universe keeps buffering us through.\nAnyway, fucking happy birthday.\nYour existence may not have tilted the population count one way or the other (kisiko spawn kill bhi na kar paya 🫩) but hey, at least we’ve survived another patch update.\n\nBas zyada khush na ho mittar, automation hai, mujhe bhi shauk nahi beech flight mein pyar jatane ka 🤢`;
+   const text = `Happy birthday twin!...,\n\nAnother year, same date, same chaos, - guess greatness (or stubbornness) really does come in pairs.\nOnce again, we somehow made it to this day alive… last year we swore it might be our last but here we are.\nStill-fucking-breathing.\n\nSome days I seriously feel like letting a car do me the favor and end the respawn cycle instantly but nope, the universe keeps buffering us through.\nAnyway, fucking happy birthday.\nYour existence may not have tilted the population count one way or the other (kisiko spawn kill bhi na kar paya 🫩) but hey, at least we've survived another patch update.\n\nBas zyada khush na ho mittar, automation hai, mujhe bhi shauk nahi beech flight mein pyar jatane ka 🤢`;
    const target = document.getElementById("typewriter");
    let index = 0;
    
@@ -242,8 +358,8 @@
        setTimeout(() => {
         copyCodeButton.textContent = "Copy Secret Code to Unlock";
         copyCodeButton.style.background = "";
-        copyCodeButton.style.borderColor = "#ff69b4";
-        copyCodeButton.style.color = "#ff69b4";
+        copyCodeButton.style.borderColor = "var(--primary-color)";
+        copyCodeButton.style.color = "var(--primary-color)";
        }, 2000);
       })
       .catch(err => {
@@ -260,5 +376,3 @@
   </script>
  </body>
 </html>
-
-
