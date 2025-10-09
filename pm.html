@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Message</title>
+  <link rel="preload" href="img/Picsart_25-10-09_13-03-08-045.png" as="image">
+  <link rel="preload" href="img/Picsart_25-10-09_13-06-02-652.png" as="image">
+  <link rel="preload" href="img/penis-eggplant.gif" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
    :root {
@@ -286,6 +289,45 @@
    .line-right {
     right: 20%;
    }
+
+   /* Styles for the word edit */
+   .edited-word {
+     position: relative;
+     display: inline-block;
+   }
+   .edited-word::after { /* The strikethrough */
+     content: "";
+     position: absolute;
+     /* I have hosted your image file to use it here */
+     background-image: url(img/Picsart_25-10-09_13-03-08-045.png); 
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+     top: 50%;
+     left: -10%;
+     width: 130%;
+     height: 100%;
+     transform: translateY(-50%);
+   }
+   .edited-word::before { /* The replacement word */
+     content: "";
+     position: absolute;
+     /* I have hosted your image file to use it here */
+     background-image: url(img/Picsart_25-10-09_13-06-02-652.png); 
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+     top: -190%;
+     left: -65%;
+     width: 250%;
+     height: 200%;
+     z-index: 20;
+     transform: rotate(-8deg);
+   }
+   .dick-gif {
+    height: auto;
+    width: 50px;
+   }
   </style>
  </head>
  <body>
@@ -298,7 +340,8 @@
   
   <div id="mainContent">
    <div class="message-box">
-    <h1>My Dickfelt Message 🍆💌</h1>
+    <!-- The h1 tag has been modified as you requested -->
+    <h1>My <span class="edited-word">Heart</span>felt Message <br>💌 <img class="dick-gif" src="img/penis-eggplant.gif"></img></h1>
     <p class="personal-msg" id="typewriter"></p>
     <img class="hug-gif" src="img/Picsart_25-04-08_10-39-05-847.png" alt="hug gif">
     
@@ -312,7 +355,7 @@
   </div>
   
   <script>
-   const text = `Happy birthday twin!...,\n\nAnother year, same date, same chaos, - guess greatness (or stubbornness) really does come in pairs.\nOnce again, we somehow made it to this day alive… last year we swore it might be our last but here we are.\nStill-fucking-breathing.\n\nSome days I seriously feel like letting a car do me the favor and end the respawn cycle instantly but nope, the universe keeps buffering us through.\nAnyway, fucking happy birthday.\nYour existence may not have tilted the population count one way or the other (kisiko spawn kill bhi na kar paya 🫩) but hey, at least we've survived another patch update.\n\nBas zyada khush na ho mittar, automation hai, mujhe bhi shauk nahi beech flight mein pyar jatane ka 🤢`;
+   const text = `Happy birthday twin!...,\n\nAnother year, same date, same chaos, - guess greatness (or stubbornness) really does come in pairs.\nOnce again, we somehow made it to this day alive… last year we swore it might be our last but here we are.\nStill-fucking-breathing.\n\nSome days I seriously feel like letting a car do me the favor and end the respawn cycle instantly but nope, the universe keeps buffering us through.\nAnyway, fucking happy birthday.\nYour existence may not have tilted the population count one way or the other (kisiko spawn kill bhi na kar paya 🫩) but hey, at least we've survived another patch update.\n\nBas zyada khush na ho mittar, automation hai, mujhe bhi shauk nahi itna pyar jatane ka 🤢`;
    const target = document.getElementById("typewriter");
    let index = 0;
    
@@ -376,4 +419,3 @@
   </script>
  </body>
 </html>
-
